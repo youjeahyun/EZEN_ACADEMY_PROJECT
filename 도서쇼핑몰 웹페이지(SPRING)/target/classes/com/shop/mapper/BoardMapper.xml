@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mapper.BoardMapper">
+
+
+	<!-- 게시글작성 -->
+	<insert id="create">
+		<selectKey resultType="int" keyProperty="boardid"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO shop_board ( boardid , title , content , writer , regDate
+		,
+		viewCnt )
+		VALUES ( #{boardid} , #{title} , #{content} , #{writer} ,
+		#{regDate} ,
+		#{viewCnt} )
+	</insert>
+
+	<!-- 게시글조회 -->
+	<select id="read" resultType="com.shop.model.BoardVO">
+		SELECT boardid , title , content ,
+		writer , regDate , viewCnt,
+		(select fileName from shop_bimage where boardid=shop_board.boardid) fileName,
+		(select uploadPath from shop_bimage where boardid=shop_board.boardid)
+		uploadPath,
+		(select uuid from shop_bimage where boardid=shop_board.boardid) uuid
+		FROM
+		shop_board WHERE boardid = #{boardid}
+	</select>
+
+
+	<!-- 게시글수정 -->
+	<update id="update">
+		UPDATE shop_board SET title = #{title} , content =
+		#{content} WHERE boardid
+		= #{boardid}
+	</update>
+
+	<!-- 게시글삭제 -->
+	<delete id="delete">
+		DELETE FROM shop_board WHERE boardid = #{boardid}
+	</delete>
+
+	<!-- 게시글 목록 -->
+	<select id="listAll" resultType="com.shop.model.BoardVO">
+
+		SELECT boardid, title, content, writer, regDate, viewCnt
+		FROM shop_board
+		<if test="keyword != null">
+			where title like concat('%',#{keyword}, '%')
+		</if>
+		order by boardid desc
+		limit #{skip}, #{amount}
+	</select>
+
+
+
+	<!-- 작성자 수 -->
+	<select id="writerGetTotal" resultType="int">
+
+		select count(*) from shop_board
+
+		<if test="keyword != null">
+
+			where title like concat('%', #{keyword}, '%');
+
+		</if>
+
+	</select>
+	<!-- 게시판 조회수 -->
+	<update id="boardHit" parameterType="int">
+		UPDATE shop_board SET
+		viewCnt = viewCnt+1
+		WHERE boardid = #{boardid}
+	</update>
+	<!-- 이미지 등록 -->
+	<insert id="bimageEnroll">
+
+		insert into shop_bimage(boardid, fileName, uploadPath, uuid) values
+		(#{boardid}, #{fileName}, #{uploadPath}, #{uuid})
+
+	</insert>
+</mapper>
+
+
+
+

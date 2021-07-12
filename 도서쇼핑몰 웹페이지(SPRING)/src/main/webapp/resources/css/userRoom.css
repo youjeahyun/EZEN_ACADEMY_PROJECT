@@ -1,0 +1,553 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+/* 화면 전체 렙 */
+.wrapper {
+	width: 100%;
+}
+/* content 랩 */
+.wrap {
+	width: 1080px;
+	margin: auto;
+}
+/* 홈페이지 기능 네비 */
+.top_gnb_area {
+	width: 100%;
+	height: 50px;
+	background-color: style="color:white; background-color:#424242";
+	position: relative;
+}
+
+.top_gnb_area .list {
+	position: absolute;
+	top: 0px;
+	right: 0;
+}
+
+.top_gnb_area .list li {
+	list-style: none;
+	float: left;
+	padding: 13px 15px 0 10px;
+	font-weight: 900;
+	cursor: pointer;
+}
+
+/* 로고, 검색, 로그인 */
+.top_area {
+	width: 100%;
+	height: 130px;
+}
+/* 로고 영역 */
+.logo_area {
+	width: 25%;
+	height: 100%;
+	float: left;
+}
+
+.logo_area img {
+	border-top-width: 5px;
+	margin-top: 40px;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 40px;
+	border-radius: 15px;
+}
+
+/* 검색 박스 영역 */
+.search_area {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+/* 로그인 버튼 영역 */
+.login_area {
+	width: 25%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
+.login_fail_area {
+	margin-top: 30px;
+	color: #fff;
+	background-color: gray;
+	box-shadow: 0 0 0 .2rem #424242;
+	border-color: gray;
+	font-weight: 900;
+	height: 90px;
+	width: 80%;
+	border-radius: 15px;
+	margin: 5% auto;
+	padding-top: 5%;
+}
+
+/* 제품 목록 네비 */
+.navi_bar_area {
+	width: 1080px;
+	height: 60px;
+	background-color: #c0c0c0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-weight: bold;
+	color: red;
+	//
+	글씨
+	색을
+	붉은색으로
+	설정
+	background-color
+	:
+	#4d4d4d;
+	//
+	배경색을
+	조금
+	더
+	밝은
+	회색으로
+	설정
+}
+
+.menulink:hover {
+	color: black;
+}
+
+/* 홈페이지 메인 제품 목록  */
+.content_area {
+	width: 100%;
+	height: 1600px;
+}
+
+/* 로그인 성공 영역 */
+.login_success_area {
+	height: 62%;
+	width: 80%;
+	border: 3px solid #424242;
+	border-radius: 15px;
+	margin: 5% auto;
+	padding-top: 5%;
+}
+
+.login_success_area>a {
+	font-size: 15px;
+	font-weight: 900;
+	display: inline-block;
+	margin-top: 5px;
+	background: #e1e5e8;
+	width: 82px;
+	height: 22px;
+	line-height: 22px;
+	border-radius: 25px;
+	color: black;
+}
+
+.login_success_area>span {
+	display: block;
+	text-align: left;
+	margin-left: 10%;
+	font-weight: 900;
+}
+
+.login_success_area>a:hover {
+	font-size: 15px;
+	font-weight: 900;
+	display: inline-block;
+	margin-top: 5px;
+	background: black;
+	width: 82px;
+	height: 22px;
+	line-height: 22px;
+	border-radius: 25px;
+	color: white;
+}
+
+/* 검색 영역 */
+.search_wrap {
+	margin-top: 15px;
+}
+
+.search_input {
+	position: relative;
+	text-align: center;
+}
+
+.search_input input[name='keyword'] {
+	padding: 4px 10px;
+	font-size: 15px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.search_btn {
+	height: 32px;
+	width: 80px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 20px;
+	position: absolute;
+	margin-left: 15px;
+	background-color: #c3daf7;
+}
+
+.table_empty {
+	height: 50px;
+	text-align: center;
+	margin: 200px 0 215px 0px;
+	font-size: 25px;
+}
+
+/* 페이지 버튼 인터페이스 */
+.pageMaker_wrap {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.pageMaker_wrap a {
+	color: black;
+}
+
+.pageMaker {
+	list-style: none;
+	display: inline-block;
+}
+
+.pageMaker_btn {
+	float: left;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 20px;
+}
+
+.next, .prev {
+	border: 1px solid #ccc;
+	padding: 0 10px;
+}
+
+.next a, .prev a {
+	color: #ccc;
+}
+
+.active { /* 현재 페이지 버튼 */
+	border: 2px solid black;
+	font-weight: 400;
+}
+
+/* footer navai 영역 */
+.footer_nav {
+	width: 100%;
+	height: 50px;
+}
+
+.footer_nav_container {
+	width: 100%;
+	height: 100%;
+	background-color: #8EC0E4;
+}
+
+.footer_nav_container>ul {
+	font-weight: bold;
+	float: left;
+	list-style: none;
+	position: relative;
+	padding-top: 10px;
+	line-height: 27px;
+	font-family: dotum;
+	margin-left: 10px;
+}
+
+.footer_nav_container>ul>li {
+	display: inline;
+	width: 45px;
+	height: 19px;
+	padding: 10px 9px 0 10px;
+}
+
+.footer_nav_container>ul>span {
+	margin: 0 4px;
+}
+/* footer 영역 */
+.footer {
+	width: 100%;
+	height: 130px;
+	background-color: #191919;
+	padding-bottom: 50px;
+	.
+}
+
+.footer_container {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+
+.footer_left>img {
+	width: 150%;
+	height: 130px;
+	margin-left: 0px;
+	margin-top: -12px;
+	border-radius: 15px;
+}
+
+.footer_left {
+	float: left;
+	width: 170px;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+.footer_right {
+	float: left;
+	width: 680px;
+	margin-left: 100px;
+	margin-top: 30px;
+}
+
+/* float 속성 해제 */
+.clearfix {
+	clear: both;
+}
+
+/* 상품목록 */
+.goods h2 {
+	margin-left: 50px;
+}
+
+.goods .content {
+	position: relative;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+/* Safari, Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.goods .btn_list_more button {
+		padding-top: 0;
+	}
+}
+/* FireFox */
+@
+-moz-document url-prefix (){ .goods .btn_list_more button {
+	padding-top: 0;
+}
+
+}
+.goods_list {
+	margin: 0 -8px;
+}
+
+.goods_list li {
+	display: block;
+	float: left;
+	padding: 20px 30px;
+	width: 180px;
+	height: 240px;
+	text-align: center;
+	line-height: 1.4;
+}
+
+.goods_list li a {
+	position: relative;
+	display: block;
+	width: 180px;
+	padding-top: 198px;
+	height: 42px;
+	*cursor: pointer;
+}
+
+.goods_list li a .cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 180px;
+	overflow: hidden;
+}
+
+.goods_list li a .cover img {
+	width: 180px;
+	height: 180px;
+	transition: transform 0.3s linear;
+}
+
+.goods_list li a .category {
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	background: url('/resources/img/one.png') no-repeat;
+	width: 182px;
+	height: 37px;
+	padding-top: 145px;
+	color: #fff;
+	font-weight: bold;
+}
+
+.goods_list li a .title {
+	color: #333;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.goods_list li a .author {
+	color: #333;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.goods_list li a:hover .title {
+	text-decoration: underline;
+}
+
+.goods_list li a:hover .author {
+	text-decoration: underline;
+}
+
+.goods_list li a:hover img {
+	transform: scale(1.05, 1.05);
+}
+
+div.goods div.goodsImg {
+	float: left;
+	width: 350px;
+}
+
+div.goods div.goodsImg img {
+	width: 350px;
+	height: auto;
+}
+
+div.goods div.goodsInfo {
+	float: right;
+	width: 330px;
+	font-size: 22px;
+}
+
+div.goods div.goodsInfo p {
+	margin: 0 0 20px 0;
+}
+
+div.goods div.goodsInfo p span {
+	display: inline-block;
+	width: 100px;
+	margin-right: 15px;
+}
+
+div.goods div.goodsInfo p.cartStock input {
+	font-size: 22px;
+	width: 50px;
+	padding: 5px;
+	margin: 0;
+	border: 1px solid #eee;
+}
+
+div.goods div.goodsInfo p.cartStock button {
+	font-size: 26px;
+	border: none;
+	background: none;
+}
+
+div.goods div.goodsInfo p.addToCart {
+	text-align: right;
+}
+
+div.goods div.gdsDes {
+	font-size: 18px;
+	clear: both;
+	padding-top: 30px;
+}
+
+div.goods div.goodsInfo p.cartStock button {
+	font-size: 26px;
+	border: none;
+	background: none;
+}
+
+/* 관리자 wrap(네비+컨텐츠) */
+.user_wrap {
+	margin-top:15px;
+}
+
+/* 관리자페이지 네비 영역 */
+.user_navi_wrap {
+  width: 20%;
+  height: 300px;
+  float: left;
+  height: 100%;
+}
+.user_navi_wrap li {
+  display: block;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+.user_navi_wrap li a {
+  display: block;
+  height: 100%;
+  width: 95%;
+  margin: 0 auto;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: bolder;
+}
+.user_navi_wrap li a:link {
+  color: black;
+}
+.user_navi_wrap li a:visited {
+  color: black;
+}
+.user_navi_wrap li a:active {
+  color: black;
+}
+.user_navi_wrap li a:hover {
+  color: black;
+}
+
+/* 관리자페이지 컨텐츠 영역 */
+.user_content_wrap {
+  width: 80%;
+  float: left;
+  min-height: 300px;
+  background-color:#424242"
+}
+.user_content_wrap div {
+  margin-top: 135px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bolder;
+}
+/* 관리제 페이지 상단 현페이지 정보 */
+.user_top_wrap{
+    height:110px;
+    line-height: 110px;
+    background-color: #5080bd;
+    margin-bottom: 15px;
+}
+.user_top_wrap>span{
+    margin-left: 30px;
+    display:inline-block;
+    color: white;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.user_content_subject{	/* 관리자 컨텐츠 제목 영역 */
+    font-size: 40px;
+    font-weight: bolder;
+    padding-left: 15px;
+    background-color: #c8c8c8;
+    height: 80px;
+    line-height: 80px;
+    color: white;	
+}

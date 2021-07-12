@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Movie/src"/>
+	<classpathentry kind="lib" path="Movie/lib/idw-gpl.jar"/>
+	<classpathentry kind="lib" path="Movie/lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="Movie/lib/JTattoo.jar"/>
+	<classpathentry kind="lib" path="Movie/lib/liquidlnf.jar"/>
+	<classpathentry kind="lib" path="Movie/lib/napkinlaf-1.2.jar"/>
+	<classpathentry kind="lib" path="Movie/lib/napkinlaf-swingset-1.2.jar"/>
+	<classpathentry kind="lib" path="Movie/lib/quaqua.jar"/>
+	<classpathentry kind="lib" path="Movie/lib/synthetica_remove.jar"/>
+	<classpathentry kind="output" path="Movie/bin"/>
+</classpath>

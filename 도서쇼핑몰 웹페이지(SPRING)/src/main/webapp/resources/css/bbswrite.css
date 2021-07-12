@@ -1,0 +1,331 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding:0;
+   }
+
+a{
+	text-decoration: none;
+    color:white;
+}
+/* 화면 전체 렙 */
+.wrapper{
+	width: 100%;
+}
+/* content 랩 */
+.wrap{
+	width : 1080px;
+	margin: auto;
+}
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area{
+	width: 100%;
+    height: 50px;
+    background-color: style="color:white; background-color:#424242";
+    position:relative;    
+}
+.top_gnb_area .list{
+	position: absolute;
+    top: 0px;
+    right: 0;    
+    
+}
+.top_gnb_area .list li{
+	list-style: none;	
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+    
+}
+
+/* 로고, 검색, 로그인 */
+.top_area{
+	width: 100%;
+    height: 130px;
+}
+/* 로고 영역 */
+.logo_area{
+	width: 25%;
+	height: 100%;
+	float:left;
+}
+.logo_area img{	
+    border-top-width: 5px;
+    margin-top: 40px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 40px;
+     border-radius: 15px;
+
+}
+
+/* 검색 박스 영역 */
+.search_area{
+	width: 50%;
+	height: 100%;
+	float:left;	
+}
+/* 로그인 버튼 영역 */
+.login_area{
+	width: 25%;
+	height: 100%;
+	display: inline-block;	
+	text-align: center;		
+}
+.login_fail_area{
+    margin-top: 30px;
+    color:#fff;
+    background-color: gray;
+    box-shadow:0 0 0 .2rem #424242;
+    border-color: gray;
+    font-weight: 900;
+    height: 90px;
+    width: 80%;
+    border-radius: 15px;
+    margin: 5% auto;
+    padding-top: 5%;
+}
+
+/* 제품 목록 네비 */
+.navi_bar_area{
+	width: 1080px;
+    height: 60px;
+    background-color: #c0c0c0;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    font-weight:bold;
+     color: red;                   // 글씨 색을 붉은색으로 설정
+                        background-color: #4d4d4d;    // 배경색을 조금 더 밝은 회색으로 설정
+    
+    
+}
+
+.menulink:hover{
+    color:black;
+    
+}
+
+
+
+/* 홈페이지 메인 제품 목록  */
+.bbs_area{
+	width: 100%;
+    margin-bottom : 20px;
+}
+.bbs_div {
+	text-align:center;
+	margin-left: 135px;
+	margin-right: 135px;
+	margin-top: 20px;"
+	margin-bottom: 20px;"
+}
+
+.bbs_div > table{
+	width: 815px;
+   
+}
+
+/* 검색 영역 */
+.search_wrap{
+	margin-top:15px;
+}
+.search_input{
+    position: relative;
+    text-align:center;	
+}
+.search_input input[name='keyword']{
+	padding: 4px 10px;
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+}
+.search_btn{
+	height: 32px;
+    width: 80px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    position: absolute;
+    margin-left: 15px;
+    background-color: #c3daf7;
+}
+
+.table_empty{
+	height: 50px;
+    text-align: center;
+    margin: 200px 0 215px 0px;
+    font-size: 25px;
+}
+
+	/* 페이지 버튼 인터페이스 */
+.pageMaker_wrap{
+	text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.pageMaker_wrap a{
+	color : black;
+}
+.pageMaker{
+    list-style: none;
+    display: inline-block;
+}	
+.pageMaker_btn {
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+}
+.next, .prev {
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+.next a, .prev a {
+    color: #ccc;
+}
+.active{							/* 현재 페이지 버튼 */
+	border : 2px solid black;
+	font-weight:400;
+}
+
+
+/* 로그인 성공 영역 */
+.login_success_area{
+	height: 62%;
+    width: 80%;
+    border: 3px solid #424242;
+    border-radius: 15px;
+    margin: 5% auto;
+    padding-top: 5%;
+}
+.login_success_area>a{
+    font-size: 15px;
+    font-weight: 900;
+    display: inline-block;
+    margin-top: 5px;
+    background: #e1e5e8;
+    width: 82px;
+    height: 22px;
+    line-height: 22px;
+    border-radius: 25px;
+    color: black;    
+}
+.login_success_area>span{
+	display : block;
+	text-align: left;
+    margin-left: 10%;
+    font-weight: 900;
+  
+}
+.login_success_area>a:hover{
+	font-size: 15px;
+    font-weight: 900;
+    display: inline-block;
+    margin-top: 5px;
+    background: black;
+    width: 82px;
+    height: 22px;
+    line-height: 22px;
+    border-radius: 25px;
+    color: white;    
+}
+
+/* footer navai 영역 */
+.footer_nav{
+	width:100%;
+	height:50px;
+}
+.footer_nav_container{
+	width: 100%;
+	height: 100%;
+	background-color:#8EC0E4;
+}
+.footer_nav_container>ul{
+	font-weight : bold;
+	float:left;
+	list-style:none;
+	position:relative;
+	padding-top:10px;
+	line-height: 27px;
+	font-family: dotum;
+	margin-left: 10px;
+}
+.footer_nav_container>ul>li{
+	display:inline;
+	width: 45px;
+	height: 19px;
+	padding: 10px 9px 0 10px;
+}
+.footer_nav_container>ul>span{
+	margin: 0 4px;
+}
+/* footer 영역 */
+.footer{
+	width:100%;
+	height:130px;
+	background-color: #191919;
+	padding-bottom : 50px;.
+	
+}
+.footer_container{
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.footer_left>img {
+	width: 150%;
+    height: 130px;
+    margin-left: 0px;
+    margin-top: -12px;
+    border-radius: 15px;
+}
+.footer_left{
+	float :left;
+	width: 170px;
+	margin-left: 20px;
+	margin-top : 30px;
+	
+}
+.footer_right{
+	float :left;
+	width: 680px;
+	margin-left: 100px;
+	margin-top : 30px;
+}
+
+
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}
+
+#wrap {
+    width: 100%
+	margin:auto;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    line-height: 24px;
+}
+table td,th {
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+}
+th {
+	background: rgb(221, 221, 221);
+}
+
+
+.btn{
+    margin-top: 15px;
+    width: 120px;
+    height: 35px;
+    font-size: 17px;
+}

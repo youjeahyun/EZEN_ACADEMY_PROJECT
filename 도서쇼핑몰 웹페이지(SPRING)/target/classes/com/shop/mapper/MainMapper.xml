@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.shop.mapper.MainMapper">
+  
+      	 <!-- 이미지 -->
+	  	<select id="mainImage" resultType="com.shop.model.AttachImageVO">
+	  	
+	  		select * from shop_image
+	  	
+	  	</select>
+	  	
+	  	
+	  	<select id="mainImage2" resultType="com.shop.model.AttachImageVO">
+	  	
+	  		select * from shop_image
+	  	
+	  	</select>
+	  	
+	  	 <select id="mainKo" resultType="com.shop.model.AttachImageVO">
+	  	
+	  		<!--select * from shop_image where nationId = #{nationId}-->
+	  		
+	  		select b.nationId,b.authorName,a.bookPrice,a.bookName,i.bookId,i.fileName,i.uploadPath,i.uuid from shop_book a left join shop_author b on a.authorId = b.authorId join
+ 			shop_image i on a.bookId = i.bookId where nationId = #{nationId} limit #{skip}, #{amount};
+	  	
+	  	</select>
+	  	
+	  	
+	  		 <select id="mainEn" resultType="com.shop.model.AttachImageVO">
+	  	
+	  		<!--select * from shop_image where nationId = #{nationId}-->
+	  		
+	  		select b.nationId,b.authorName,a.bookPrice,a.bookName,i.bookId,i.fileName,i.uploadPath,i.uuid from shop_book a left join shop_author b on a.authorId = b.authorId join
+ 			shop_image i on a.bookId = i.bookId where nationId = #{nationId} limit #{skip}, #{amount};
+	  	
+	  	</select>
+	  	
+	  		<select id="mainDetail" resultType="com.shop.model.AttachImageVO">
+	  	
+	  		select b.authorName,a.bookStock,a.bookName, a.bookPrice,i.bookId,i.fileName,i.uploadPath,i.uuid from shop_book a left join shop_author b on a.authorId = b.authorId join
+ 			shop_image i on a.bookId = i.bookId where i.bookId = #{bookId};
+	  	
+	  	</select>
+	  	
+	  	
+	  	  <!-- 회원 수 -->
+         <select id="mainGetTotal" resultType="int">
+      
+             select count(*) from shop_image
+             
+             <if test="keyword != null">
+             
+                 where bookId like concat('%', #{keyword}, '%');
+             
+             </if>
+          
+         </select>
+         
+         <!-- 국내 총수 -->
+        
+          <select id="mainGetTotal2" resultType="int">
+      
+             select count(*) from shop_book a left join shop_author b on a.authorId = b.authorId join
+              shop_image i on a.bookId = i.bookId where nationId = #{nationId};
+          
+         </select>
+         
+         
+         <!-- 외국 총수 -->
+        
+          <select id="mainGetTotal5" resultType="int">
+      
+             select count(*) from shop_book a left join shop_author b on a.authorId = b.authorId join
+              shop_image i on a.bookId = i.bookId where nationId = #{nationId};
+          
+         </select>
+         
+         
+            <!-- 장르별 총수 -->
+           <select id="mainGetTotal3" resultType="int">
+      
+             select count(*) from shop_book a left join shop_author b on a.authorId = b.authorId join
+              shop_image i on a.bookId = i.bookId 
+              <if test="cateCode != null">
+			where a.cateCode like concat ('%', #{cateCode}, '%');
+			</if>
+          
+         </select>
+         
+         
+         <!-- 작가별 총수 -->
+           <select id="mainGetTotal4" resultType="int">
+      
+             select count(*) from shop_book a left join shop_author b on a.authorId = b.authorId join
+              shop_image i on a.bookId = i.bookId 
+              <if test="authorName != null">
+			where b.authorName like concat ('%', #{authorName}, '%')
+			</if>
+			<if test="keyword != null">
+			 and (a.bookId like concat ('%', #{keyword}, '%'))
+		</if>
+          
+         </select>
+         
+         
+         
+         
+         	<!-- 이미지 리스트 -->
+	<select id="mainGetList" resultType="com.shop.model.AttachImageVO">
+	
+		select  b.bookId, b.fileName,  b.uploadPath, b.uuid,a.bookName,a.bookPrice
+		from shop_book a 
+		left outer join shop_image b on a.bookId = b.bookId
+		left outer join shop_bcate c on a.cateCode = c.cateCode
+		<if test="keyword != null">
+			where (b.bookId like concat ('%', #{keyword}, '%'))
+		</if>
+		order by b.bookId desc 
+		limit #{skip}, #{amount}		
+	
+	</select>
+	
+	
+		<!-- 작가별 리스트 -->
+		<select id="authorGetList2" resultType="com.shop.model.AttachImageVO">
+	
+		select c.authorName, b.bookId, b.fileName,  b.uploadPath, b.uuid,a.bookName,a.bookPrice
+		from shop_book a 
+		left outer join shop_image b on a.bookId = b.bookId
+		left outer join shop_author c on a.authorId = c.authorId
+		<if test="authorName != null">
+			where (c.authorName like concat ('%', #{authorName}, '%'))
+		</if>
+		<if test="keyword != null">
+			 and (a.bookId like concat ('%', #{keyword}, '%'))
+		</if>
+		order by b.bookId desc 
+		limit #{skip}, #{amount}		
+	
+	</select>
+	
+		<!-- 장르별 리스트 -->
+		<select id="genreGetList" resultType="com.shop.model.AttachImageVO">
+	
+		select  b.bookId, b.fileName,  b.uploadPath, b.uuid,a.bookName,a.bookPrice,d.authorName
+		from shop_book a 
+		left outer join shop_image b on a.bookId = b.bookId
+		left outer join shop_bcate c on a.cateCode = c.cateCode
+		left outer join shop_author d on d.authorId = a.authorId
+		<if test="cateCode != null">
+			where (a.cateCode like concat ('%', #{cateCode}, '%'))
+		</if>
+		order by b.bookId desc 
+		limit #{skip}, #{amount}		
+	
+	</select>
+	
+	
+  <select id="mainSearch" resultType="com.shop.model.AttachImageVO">
+        
+           <!--select * from shop_image where nationId = #{nationId}-->
+           
+           select b.nationId,b.authorName,a.bookPrice,a.bookName,i.bookId,i.fileName,i.uploadPath,i.uuid from shop_book a left join shop_author b on a.authorId = b.authorId join
+          shop_image i on a.bookId = i.bookId 
+           <if test="keyword != null">
+                 where a.bookName like concat('%', #{keyword}, '%')
+             </if>
+          limit #{skip}, #{amount};
+        
+        </select>
+  </mapper>

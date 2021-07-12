@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/* 화면 전체 렙 */
+.wrapper {
+  padding: 100px 0px;
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: auto;
+}
+
+/* 페이지 로고 */
+.logo_wrap {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.logo_wrap > span {
+  font-size: 50px;
+  font-weight: 900;
+}
+
+/* 로그인 area */
+
+.id_input {
+  border: 1px solid black;
+  font-size: 25px;
+}
+.id_wrap {
+  text-align: center;
+}
+.pw_wrap {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.pw_input {
+  border: 1px solid black;
+  font-size: 25px;
+}
+
+.login_button_wrap {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* 로그인 실패시 경고글 */
+.login_warn {
+  margin-top: 30px;
+  text-align: center;
+  color: red;
+}
+
+/* float 속성 해제 */
+.clearfix {
+  clear: both;
+  
+/* 유효성 검사 문구 */
+}
+.final_id_ck {
+  display: none;
+}
+.final_pw_ck {
+  display: none;
+}
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mapper.ReplyMapper">
+
+	<select id="list" resultType="com.shop.model.ReplyVO">
+		SELECT replyno , boardid ,
+		replytext , replywriter , regdate , update_date
+		FROM shop_reply
+		WHERE
+		boardid = #{boardid}
+		ORDER BY replyno
+
+	</select>
+	
+
+
+	<insert id="create">
+		INSERT INTO shop_reply ( boardid , replytext ,
+		replywriter ) VALUES ( #{boardid} , #{replytext} ,
+		#{replywriter} )
+	</insert>
+
+	<update id="update" parameterType="com.shop.model.ReplyVO">
+		UPDATE shop_reply SET replytext = #{replytext} 
+	
+		WHERE replyno = #{replyno}
+	</update>
+
+	<delete id="delete" parameterType="com.shop.model.ReplyVO">
+		DELETE FROM shop_reply WHERE replyno = #{replyno}
+	</delete>
+	
+<!-- 선택된 댓글 조회 -->
+	<select id="selectReply" resultType="com.shop.model.ReplyVO">
+		SELECT
+				boardid
+			  , replyno
+			  , replytext
+			  , replywriter
+			  , regdate
+		  FROM shop_reply
+		 WHERE replyno = #{replyno}
+	</select>
+	
+</mapper>
+

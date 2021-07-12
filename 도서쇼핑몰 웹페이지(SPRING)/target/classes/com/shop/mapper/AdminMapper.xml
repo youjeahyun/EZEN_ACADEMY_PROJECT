@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.shop.mapper.AdminMapper">
+	
+	<!-- 상품등록 -->
+  	<insert id="bookEnroll">
+  	<selectKey resultType="int" keyProperty="bookId" order="AFTER">
+  		
+  			SELECT LAST_INSERT_ID()
+  		
+  		</selectKey>	
+  		insert into shop_book(bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
+		values(#{bookName},#{authorId}, #{publeYear},#{publisher},#{cateCode},#{bookPrice},#{bookStock},#{bookDiscount},#{bookIntro},#{bookContents})
+
+  	</insert>
+
+	<!-- 카테고리 리스트 -->
+  	<select id="cateList" resultType="com.shop.model.CateVO">
+  	
+  		select * from shop_bcate order by catecode
+  	
+  	</select>
+  	
+  	<!-- 상품 리스트 -->
+	<select id="goodsGetList" resultType="com.shop.model.BookVO">
+	
+		select  bookId, bookName,  b.authorName, c.cateName, bookStock, a.regDate
+		from shop_book a 
+		left outer join shop_author b on a.authorId = b.authorId
+		left outer join shop_bcate c on a.cateCode = c.cateCode
+		<if test="keyword != null">
+			where (bookName like concat ('%', #{keyword}, '%'))
+		</if>
+		order by bookId desc 
+		limit #{skip}, #{amount}		
+	
+	</select>
+  	
+  	<!-- 상품 총 갯수 -->
+  	<select id="goodsGetTotal" resultType="int">
+  	
+  		select count(*) from shop_book
+  		
+  		<if test="keyword != null">
+  		
+  			where bookName like concat('%' , #{keyword}, '%')
+  		
+  		</if>
+  	
+  	</select>
+  	
+  	<!-- 상품 조회 페이지 -->
+	<select id="goodsGetDetail" resultType="com.shop.model.BookVO">
+	
+		select bookId, bookName, (select authorName from shop_author where authorId =shop_book.authorId) authorName, 
+			authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents, regDate, updateDate,
+            (select fileName from shop_image where bookId=shop_book.bookId) fileName,
+            (select uploadPath from shop_image where bookId=shop_book.bookId) uploadPath,
+            (select uuid from shop_image where bookId=shop_book.bookId) uuid
+		from shop_book where bookId = #{bookId}
+
+	
+	</select>
+	
+	<!-- 상품 정보 수정 -->
+	<update id="goodsModify">
+		
+		update shop_book set bookName = #{bookName}, authorId = #{authorId}, publeYear = #{publeYear}, publisher = #{publisher}, cateCode = ${cateCode}, 
+		bookPrice = #{bookPrice}, bookStock = #{bookStock}, bookDiscount = #{bookDiscount}, bookIntro = #{bookIntro}, bookContents = #{bookContents}, updateDate = now()
+		where bookId = ${bookId}
+		
+	</update>
+	
+	<!-- 상품 정보 삭제 -->
+	<delete id="goodsDelete">
+	
+		delete from shop_book where bookId = #{bookId}
+	
+	</delete>
+	
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+	
+		insert into shop_image(bookId, fileName, uploadPath, uuid) values (#{bookId}, #{fileName}, #{uploadPath}, #{uuid})
+	
+	</insert>
+	
+	 <!-- 회원 목록 -->
+	    <select id="memberGetList" resultType="com.shop.model.MemberVO">
+	    
+	        select  memberId,memberName, regDate
+	        from shop_member 
+	        <if test="keyword != null">
+	            where memberName like concat('%',#{keyword}, '%')
+	        </if>
+	       order by memberId desc 
+		   limit #{skip}, #{amount}   
+	    
+	    </select>
+	    
+	    <!-- 회원 수 -->
+      	<select id="memberGetTotal" resultType="int">
+      
+	          select count(*) from shop_member
+	          
+	          <if test="keyword != null">
+	          
+	              where memberName like concat('%', #{keyword}, '%');
+	          
+	          </if>
+          
+     	 </select>
+     	 
+     	 <!-- 회원 디테일 페이지 -->
+	  	<select id="memberGetDetail" resultType="com.shop.model.MemberVO">
+	  	
+	  		select * from shop_member where memberId = #{memeberId}
+	  	
+	  	</select>
+	  	
+	  		
+      <!-- 회원 정보 삭제 -->
+  	<delete id="memberDelete">
+  	
+  		delete from shop_member where memberId = #{memberId}
+  	
+  	</delete>
+  </mapper>

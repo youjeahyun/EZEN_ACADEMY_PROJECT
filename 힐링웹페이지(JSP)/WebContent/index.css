@@ -1,0 +1,551 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script:400,700");
+/* 폰트임포트 시킴.
+
+html항목의 요소에서 class .으로 id #으로 태그는 그냥 요소명으로 숙지합니다  */
+/*여기는 BODY 전체 설정*/
+body { 
+  font-family: "Poppins", sans-serif; /* 글꼴지정 */
+  font-weight: 300; /* 글꼴굵기 */
+  font-size: 15px; /* 글꼴크기 */
+  line-height: 1.6; /* 줄높이속성 */
+  color: #fff;  /* 글자색상 */
+  background-color: #1f2029; /* 배경색 */
+  overflow: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 그것을 어떻게할지 hideen은 넘친데이터는 안보이게해줌. */
+  height: 100vh; /* 높이  vh는 현재 실행중인 스크린 크기에 따라 반응함 스크롤바 포함*/
+  -webkit-transition: all 300ms linear;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  perspective: 800px; /* 컨테이너(부모)에 원근감을 설정 */
+}
+a {
+  cursor: pointer; /* 마우스커서를 손가락모양 (클릭가능한버튼) 으로  */
+}
+a:hover {
+  text-decoration: none; /* 선으로 텍스트를 꾸밀게해주는데 보이지않게 설정 */
+}
+::selection { /* 홈페이지에서 드래그하는 부분의 색상 */
+  color: #c4c3ca; /* 색상 */
+  background-color: #000; /* 배경색 */
+}
+::-moz-selection {/* 브라우저간에 같은 css를 보여주기위함  moz는 파이오폭스임*/
+  color: #c4c3ca; /* 색상 */
+  background-color: #000; /* 배경색 */
+}
+
+/*여기서부터 마우스커서디자인쪽임 ,구글링해서 커서쪽css랑 커서쪽 자바스크립트는 갖고왔기때문 */
+.cursor,
+.cursor2,
+.cursor3,
+.cursor4 {
+  position: fixed; /*  위치를 정함 fixed는 고정된 위치  */
+  border-radius: 50%; /* 테두리의 꼭짓점을 둥글게해줌 50% */
+  transform: translateX(-50%) translateY(-50%); 
+  pointer-events: none; 
+  left: -100px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  top: 50%; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  mix-blend-mode: difference;
+  -webkit-transition: all 300ms linear; /* 크로스 브라우징을 위해  크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+}
+.cursor {
+  background-color: #fff; /* 배경색 */
+  height: 0; /* 높이조절 */
+  width: 0; /* 너비조절 */
+  z-index: 99999; /* 위치 지정요소 우선순위라 생각하면될듯 */
+}
+.cursor2,
+.cursor3,
+.cursor4 {
+  height: 40px; /* 높이조절 */
+  width: 40px; /* 너비조절 */
+  z-index: 99998; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  -webkit-transition: all 0.3s ease-out; /* 크로스 브라우징을 위해  크롬과 사파리 웹킷 */
+  transition: all 0.3s ease-out; /* 커서이동할떄 똥그라미 따라오는 속도 */
+}
+.cursor2.hover,
+.cursor3.hover,
+.cursor4.hover {
+  border: none; /* 글자나 마우스오버될때 선사라짐 */
+}
+.cursor2 {
+  border: 2px solid #fff; /* 커서따라오는 동그라미 선에 대한 CSS  */
+}
+.cursor2.hover { 
+  background: rgba(255, 255, 255, 1); /* 마우스오버될때 색깔바뀌게 해줌 */
+  border-color: transparent; /* 선의 색은 투명하게 만들어줌 */
+}
+
+@media screen and (max-width: 1200px) { /* 커서에대해서는 1200PX이하로되면 마우스효과를 없앤다 */
+  .cursor,
+  .cursor2,
+  .cursor3,
+  .cursor4 {
+    display: none;
+  }
+}
+
+/*여기서부턴 우리소스작성한 것에 대한 본격적인 css 부트스트랩사용을 재정의하거나, 따로 뭔가효과를 줄때 사용*/
+.hero-section {
+  position: relative; /* position relative 는 태그위위치를 살짝 변경할때 사용 */
+  width: 100%; /* 너비 100% 다씀 */
+  display: block; /* 화면구성은 블록으로 설정 */
+  overflow: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 그것을 어떻게할지 hideen은 넘친데이터는 안보이게해줌. */
+  height: 100vh; /*높이 vh 현재 실행중인 스크린 크기에 따라 반응한다(스크롤바 포함o) */
+  background-image: url(index/배경전구.jpg); /* 배경이미지 */
+  background-size: cover; /* 배경이미지크기 */
+  background-position: center; /* 배경이미지위치지정 */
+  transform: scale(1) rotateX(0); 
+  /* transform은 위치를 이동시키거나 크기 조절 및 회전 능력을 갖고있음 scale은 x축y축비율을 1확대 rotateX는 x축으로 확대 */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  /* 박스쉐도우는 테두리를 감싼 그림자 효과를 줌 수평, 수직, 그림자 진한정도, 그림자크기 정도*/
+  -webkit-transition: all 300ms linear;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+   transition: all 300ms linear;/* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  -webkit-transition-delay: 300ms;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+  transform-origin: center top; /* 요소 변환의 기준점을 설정 X축센터 Y축탑 */
+  text-align: center; /* 글자정렬 중앙으로 */
+}
+.hero-section h1 { 
+  color: #fff; /* 글자색상 */
+  font-size: 5vw; /* 글자사이즈 뷰포트 너비의 5%사용 반응형 */
+  line-height: 1; /* 선 높이조절 */
+  font-weight: 900; /* 글자 굵기 */
+}
+.hero-section .teamname {
+  font-family: "Dancing Script", cursive; /* 임포트한 글꼴지정 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  color: #866baf; /* 글자색상 */
+  font-size: 60px; /*글자 크기 */
+  line-height: 1; /* 선 높이조절 */
+  font-weight: bold; /* 글자 굵기 */
+  text-align: center; /* 텍스트 정렬 */
+}
+@media screen and (max-width: 580px) {
+  .hero-section .teamname {
+    font-size: 20px; /*글자 크기 */
+  }
+}
+.hero-section p {
+  font-size: 20px; /*글자 크기 */
+  line-height: 30px; /* 높이조절 */
+  font-weight: 500;  /* 글자 굵기 */
+  color: white; /* 글자색상 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  text-align: center; /* 텍스트 정렬 */
+}
+.hero-section p span {
+  margin-left: 15px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/ 
+  margin-right: 15px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/
+  position: relative; /* position relative 는 태그위위치를 살짝 변경할때 사용 */
+  display: inline-block; /*화면렌더링 성질부여 inline-block 은 말그대로 inline의 특징과 block의 특징을 모두 가진 요소 줄바꿈X 너비높이지정가능 너비높이미지정시 인라인같이 컨텐츠만큼 영역생성*/
+  cursor: pointer; /* 마우스커서를 손가락모양 (클릭가능한버튼) 으로  */
+  padding-bottom: 35px; /*패딩값 조절 개발자모드가서 건드려보면 이해됌*/
+}
+.hero-section p span:before { /* 어바웃 컨택트 뺀 중앙컨텐트의 화살표라 생각하면됨 */
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  content: ""; /*추가텍스트필요시 넣어도되는데 우린 화살표만 나오게할거라 빈공간으로 냅둠 일단 CSS추가해놈 */
+  bottom: 10px; /* 태그 위치를 아래 기준으로 어디 쯤에 위치할건지? */
+  left: 50%; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  height: 30px; /* 높이조절 */
+  width: 30px; /* 너비조절 */
+  margin-left: -15px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/
+  z-index: -1; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  background-repeat: no-repeat; /*배경사진의 반복하는방법 우리 배경화면지정할때 막 여러개찍히게하거나 늘리거나 그런느낌 하지만 효과없이 노리피트줌*/
+  background-position: center; /* 배경이미지위치지정 */
+  background-size: 30px 30px; /*배경 사이즈 조절*/
+  background-image: url("http://www.ivang-design.com/svg-load/portfolio/down.svg"); /* 아래화살표이미지 */
+  opacity: 0.5; /* 불투명도설정 */
+  -webkit-transition: all 300ms linear;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear;  /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+}
+.hero-section p span:hover:before {
+  opacity : 1; /*불투명도*/
+  bottom: 5px; /* 태그 위치를 아래 기준으로 어디 쯤에 위치할건지? */
+}
+
+body.about-on .hero-section {
+  transform: scale(0.75);
+    /* transform은 위치를 이동시키거나 크기 조절 및 회전 능력을 갖고있음 scale은 x축y축 비율을 0.75확대*/
+  -webkit-transition-delay: 0ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 0ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+body.contact-on .hero-section {
+  transform: scale(0.75);
+  /* transform은 위치를 이동시키거나 크기 조절 및 회전 능력을 갖고있음 scale은 x축y축 비율을 0.75확대*/
+  -webkit-transition-delay: 0ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 0ms;/* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+
+
+.about-text {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  font-size: 17px; /*글자 크기 */
+  line-height: 20px; /* 선 높이조절 */
+  font-weight: 700; /* 글자 굵기 */
+  color: #fff; /* 글자색상 */
+  letter-spacing: 2px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  top: 50%; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  left: 40px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  cursor: pointer; /* 마우스커서를 손가락모양 (클릭가능한버튼) 으로  */
+  z-index: 2; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  -webkit-writing-mode: vertical-lr;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  writing-mode: vertical-lr; /* ABOUT이란 문자를 좌측이 위로가게 눕힘 */
+  transform: translateY(-50%); /*Y축으로 이동*/
+  -webkit-transition: all 300ms linear;   /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+}
+.about-text:before {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  content: ""; /*추가텍스트필요시 넣어도되는데 우린 화살표만 나오게할거라 빈공간으로 냅둠 일단 CSS추가해놈 */
+  top: 50%; /* 태그 위치를 위쪽 기준으로 어디 쯤에 위치할건지? */
+  left: -25px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  height: 30px; /* 높이조절 */
+  width: 30px; /* 너비조절 */
+  margin-top: -15px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/
+  z-index: -1; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  background-repeat: no-repeat;/*배경사진의 반복하는방법 우리 배경화면지정할때 막 여러개찍히게하거나 늘리거나 그런느낌 하지만 효과없이 노리피트줌*/
+  background-position: center; /* 배경이미지위치지정 */
+  background-size: 30px 30px; /*배경 사이즈 조절*/
+  background-image: url("http://www.ivang-design.com/svg-load/portfolio/left.svg"); /*어바웃옆에있는 왼쪽화살표 */
+  opacity: 0.5;  /* 불투명도설정 */
+  -webkit-transition: all 300ms linear; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+}
+.about-text:hover:before {
+  opacity: 1;  /* 불투명도설정 */
+  left: -30px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+}
+.about-section {
+  position: fixed; /* 위치포지션을 고정으로 한다 */
+  top: 0; /* 태그 위치를 위쪽 기준으로 어디 쯤에 위치할건지? */
+  left: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  width: 100%; /* 너비조절 */
+  display: block; /* 렌더링은 블록형태로 */
+  overflow: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 그것을 어떻게할지 hideen은 넘친데이터는 안보이게해줌. */
+  height: 100vh; /* vh 현재 실행중인 스크린 크기에 따라 반응한다(스크롤바 포함o) */
+  background-color: rgba(31, 32, 41, 1); /* 배경색 */
+  transform: translateX(-100%); /*모달 창 위치 이 CSS 없으면 모달창만 계속떠있음 */
+  -webkit-transition: all 300ms linear;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  z-index: 10; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  text-align: center; /* 텍스트 정렬 */
+}
+body.about-on .about-section {
+  transform: translateX(0); /* 얘없으면 중간에 모달창켜지다가 중간에서 딱멈춤 */
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+.about-close { 
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  top: 20px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  right: 20px; /* 태그 위치를 우측 기준으로 어디 쯤에 위치할건지? */
+  width: 30px; /* 너비조절 */
+  display: block; /* 화면구성은 블록으로 설정 */
+  overflow: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 그것을 어떻게할지 hideen은 넘친데이터는 안보이게해줌. */
+  height: 30px; /* 높이조절 */
+  -webkit-transition: all 300ms linear; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  background-repeat: no-repeat;/*배경사진의 반복하는방법 우리 배경화면지정할때 막 여러개찍히게하거나 늘리거나 그런느낌 하지만 효과없이 노리피트줌*/
+  background-position: center; /* 배경이미지위치지정 */
+  background-size: 40px 40px; /* X 사진의 사이즈 지정 */
+  background-image: url("http://www.ivang-design.com/svg-load/portfolio/close.svg"); /* X 아이콘 사진 */
+  cursor: pointer; /* 마우스커서를 손가락모양 (클릭가능한버튼) 으로  */
+  z-index: 11; /* 위치 지정요소 우선순위라 생각하면될듯 */
+}
+.about-close:hover {
+  transform: rotate(90deg); /* X에 갖다대면 90도 회전함 */
+}
+.section-center {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  width: 100%; /* 너비조절 */
+  left: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  top: 50%; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  transform: translateY(-50%);
+  z-index: 1; /* 위치 지정요소 우선순위라 생각하면될듯 */
+}
+.about-section img {
+  width: 400px; /* 너비조절 */
+  height: 300px; /* 높이조절 */
+  border-radius: 4px; /* 테두리의 꼭짓점을 둥글게해줌  */
+  display: block; /* 화면구성은 블록으로 설정 */
+  margin: 0 auto; /*마진값조절 가운데정렬할때 0 AUTO씀*/
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+  /* 박스쉐도우는 테두리를 감싼 그림자 효과를 줌 수평, 수직, 그림자 진한정도, 그림자크기 정도*/
+}
+/*어바웃 페이지 하단이름에 대한 태그*/
+.about-section p span {
+  font-family: "Dancing Script", cursive;/* 임포트한 글꼴지정 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  color: #866baf; /* 글자색상 */
+  font-size: 30px; /*글자 크기 */
+  font-weight: 600; /* 글자 굵기 */
+}
+#about-text {
+  color: white; /* 글자색상 */
+  font-family: monospace;
+  font-weight: bold; /* 글자 굵기 */
+  font-size: medium; /*글자 크기 */
+}
+
+.contact-text {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  font-size: 17px; /*글자 크기 */
+  line-height: 20px; /* 높이조절 */
+  font-weight: 700;  /* 글자 굵기 */
+  color: #fff; /* 글자색상 */
+  letter-spacing: 2px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  top: 50%; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  right: 40px; /* 태그 위치를 우측 기준으로 어디 쯤에 위치할건지? */
+  cursor: pointer; /* 마우스커서를 손가락모양 (클릭가능한버튼) 으로  */
+  z-index: 2; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  -webkit-writing-mode: vertical-lr; /* CONTACT란 문자를 좌측이 위로가게 눕힘 */
+  writing-mode: vertical-lr; /* CONTACT란 문자를 좌측이 위로가게 눕힘 */
+  transform: translateY(-50%) rotate(180deg); /*Y축으로 이동 회전시켜서 좌측인게 아래로가게끔 바꿈*/
+  -webkit-transition: all 300ms linear;/* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+}
+.contact-text:before {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  content: ""; /*추가텍스트필요시 넣어도되는데 우린 화살표만 나오게할거라 빈공간으로 냅둠 일단 CSS추가해놈 */
+  top: 50%; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  left: -25px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  height: 30px; /* 높이조절 */
+  width: 30px; /* 너비조절 */
+  margin-top: -15px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/
+  z-index: -1; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  background-repeat: no-repeat;/*배경사진의 반복하는방법 우리 배경화면지정할때 막 여러개찍히게하거나 늘리거나 그런느낌 하지만 효과없이 노리피트줌*/
+  background-position: center; /* 배경이미지위치지정 */
+  background-size: 30px 30px; /* 컨택트에있는 화살표 크기지정 */
+  background-image: url("http://www.ivang-design.com/svg-load/portfolio/left.svg"); /*우측화살표 모양*/
+  opacity: 0.5;  /* 불투명도설정 */
+  -webkit-transition: all 300ms linear; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+}
+.contact-text:hover:before {
+  opacity: 1;  /* 불투명도설정 */
+  left: -30px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+}
+.contact-section {
+  position: fixed;/*  위치를 정함 fixed는 고정된 위치  */
+  top: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  left: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  width: 100%; /* 너비조절 */
+  display: block; /* 화면구성은 블록으로 설정 */
+  overflow: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 그것을 어떻게할지 hideen은 넘친데이터는 안보이게해줌. */
+  height: 100vh; /* vh 현재 실행중인 스크린 크기에 따라 반응한다(스크롤바 포함o) */
+  background-color: rgba(31, 32, 41, 1); /* 배경색 */
+  transform: translateX(100%);
+  -webkit-transition: all 300ms linear; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  z-index: 10; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  text-align: center; /* 텍스트 정렬 */
+}
+body.contact-on .contact-section {
+  transform: translateX(0);
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+.contact-close {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  top: 20px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  right: 20px; /* 태그 위치를 우측 기준으로 어디 쯤에 위치할건지? */
+  width: 30px; /* 너비조절 */
+  display: block; /* 화면구성은 블록으로 설정 */
+  overflow: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 그것을 어떻게할지 hideen은 넘친데이터는 안보이게해줌. */
+  height: 30px; /* 높이조절 */
+  -webkit-transition: all 300ms linear;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  background-repeat: no-repeat;/*배경사진의 반복하는방법 우리 배경화면지정할때 막 여러개찍히게하거나 늘리거나 그런느낌 하지만 효과없이 노리피트줌*/
+  background-position: center; /* 배경이미지위치지정 */
+  background-size: 40px 40px; /* X 닫기아이콘 사이즈 */
+  background-image: url("http://www.ivang-design.com/svg-load/portfolio/close.svg");
+  cursor: pointer; /* 마우스커서를 손가락모양 (클릭가능한버튼) 으로  */
+  z-index: 11; /* 위치 지정요소 우선순위라 생각하면될듯 */
+}
+.contact-close:hover {
+  transform: rotate(90deg); /*트랜스폼  회전시키는 디자인 각각 모달창의 X에 갖다댈때 모양*/
+}
+.contact-section a {
+  margin: 0 auto; /*마진값조절 가운데 정렬할때 0 AUTO씀*/
+  font-size: 32px; /*글자 크기 */
+  font-weight: 900; /* 글자 굵기 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  color: #fff; /* 글자색상 */
+  display: inline-block;/*화면렌더링 성질부여 inline-block 은 말그대로 inline의 특징과 block의 특징을 모두 가진 요소 줄바꿈X 너비높이지정가능 너비높이미지정시 인라인같이 컨텐츠만큼 영역생성*/
+}
+.contact-section .link a {
+  margin-left: 8px;/*마진값조절 개발자모드가서 건드려보면 이해됌*/
+  margin-right: 8px;/*마진값조절 개발자모드가서 건드려보면 이해됌*/
+  font-size: 15px; /*글자 크기 */
+  font-weight: 600; /* 글자 굵기 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  color: #866baf; /* 글자색상 */
+}
+.contact-section p span {
+  font-family: "Dancing Script", cursive;/* 임포트한 글꼴지정 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  color: #866baf; /* 글자색상 */
+  font-size: 30px; /*글자 크기 */
+  font-weight: 600; /* 글자 굵기 */
+}
+@media screen and (max-width: 580px) {
+  .contact-section a {
+    font-size: 20px; /*글자 크기 */
+  }
+  .contact-section .link a {
+    margin-left: 3px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/
+    margin-right: 3px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/
+    font-size: 13px; /*글자 크기 */
+    letter-spacing: 0; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  }
+}
+.category-section,
+.bestpost-section,
+.freeboard-section,
+.signup-section,
+.login-section,
+.myinfo-section {
+  position: fixed; /*  위치를 정함 fixed는 고정된 위치  */
+  top: 100%; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  left: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  padding: 100px 0;/*패딩값 조절 개발자모드가서 건드려보면 이해됌*/
+  width: 100%; /* 너비조절 */
+  height: 100vh; /* vh 현재 실행중인 스크린 크기에 따라 반응한다(스크롤바 포함o) */
+  display: block; /* 화면구성은 블록으로 설정 */
+  overflow-x: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 x축에대해 그것을 어떻게할지? hideen은 넘친데이터는 안보이게해줌. */
+  overflow-y: auto; /* 컨텐츠가 요소내에 모두 보여주기힘들때 Y축에대해 그것을 어떻게할지? X가 히든이니까 자동으로맞춘다. */
+  background-color: rgba(31, 32, 41, 1); /* 배경색 */
+  -webkit-transition: all 300ms linear; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  z-index: 10; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  text-align: center; /* 텍스트 정렬 */
+}
+
+.category-close,
+.bestpost-close,
+.freeboard-close,
+.signup-close,
+.login-close,
+.myinfo-close {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  top: 20px; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  right: 20px; /* 태그 위치를 우측 기준으로 어디 쯤에 위치할건지? */
+  width: 30px; /* 너비조절 */
+  display: block; /* 화면구성은 블록으로 설정 */
+  overflow: hidden; /* 컨텐츠가 요소내에 모두 보여주기힘들때 그것을 어떻게할지 hideen은 넘친데이터는 안보이게해줌. */
+  height: 30px; /* 높이조절 */
+  -webkit-transition: all 300ms linear;  /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition: all 300ms linear; /* 트랜지션을 linear로 설정하면 변화가 시작부터 종료까지 동일한 속도로 일어난다. */
+  background-repeat: no-repeat;/*배경사진의 반복하는방법 우리 배경화면지정할때 막 여러개찍히게하거나 늘리거나 그런느낌 하지만 효과없이 노리피트줌*/
+  background-position: center; /* 배경이미지위치지정 */
+  background-size: 40px 40px; /* 배경이미지의 크기조절*/
+  background-image: url("http://www.ivang-design.com/svg-load/portfolio/close.svg");/* X 의 이미지 */
+  cursor: pointer; /* 마우스커서를 손가락모양 (클릭가능한버튼) 으로  */
+  z-index: 11; /* 위치 지정요소 우선순위라 생각하면될듯 */
+}
+.category-close:hover,
+.bestpost-close:hover,
+.freeboard-close:hover,
+.signup-close:hover,
+.login-close:hover,
+.myinfo-close:hover {
+  transform: rotate(90deg);  /*트랜스폼  회전시키는 디자인 각각 모달창의 X에 갖다댈때 모양*/
+}
+body.category-on .category-section {
+  top: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+body.bestpost-on .bestpost-section {
+  top: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+body.freeboard-on .freeboard-section {
+  top: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+body.signup-on .signup-section {
+  top: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+body.login-on .login-section {
+  top: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+body.myinfo-on .myinfo-section {
+  top: 0; /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  -webkit-transition-delay: 300ms; /* 크로스 브라우징을 위해 -webkit-은 크롬과 사파리 웹킷 */
+  transition-delay: 300ms; /* transition될 속성이 transition 요청을 받은 이후 실제로 transition하기까지 기다려야하는 시간의 양을 지정 */
+}
+.category-section img,
+.bestpost-section img,
+.freeboard-section img,
+.signup-section img,
+.login-section img,
+.myinfo-section img {
+  margin-top: 30px; /*마진값조절 개발자모드가서 건드려보면 이해됌*/
+  width: 100%; /* 너비조절 */
+  height: 350px; /* 높이조절 */
+  display: block; /* 화면구성은 블록으로 설정 */
+  border-radius: 4px; /* 테두리의 꼭짓점을 둥글게해줌 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);/* 박스쉐도우는 테두리를 감싼 그림자 효과를 줌 수평, 수직, 그림자 진한정도, 그림자크기 정도*/
+  position: relative; /* position relative 는 태그위위치를 살짝 변경할때 사용 */
+}
+
+.col-md-6:hover,
+.col-lg-4:hover .photot {
+  opacity: 0.5;  /* 불투명도설정 */
+}
+
+.col-md-6:hover,
+.col-lg-4:hover #explain {
+  opacity: 1;  /* 불투명도설정 */
+}
+
+#explain {
+  position: absolute; /* absolute는 position: static 속성을 가지고 있지 않은 부모를 기준으로 움직인다.*/
+  top: 30px;  /* 태그 위치를 좌측 기준으로 어디 쯤에 위치할건지? */
+  text-shadow: black 3px 3px 3px; /* 박스쉐도우는 테두리를 감싼 그림자 효과를 줌 수평, 수직, 그림자 진한정도, 그림자크기 정도*/
+  z-index: 1; /* 위치 지정요소 우선순위라 생각하면될듯 */
+  color: white; /* 글자색상 */
+  opacity: 0;  /* 불투명도설정 */
+}
+
+.category-section h3,
+.bestpost-section h3,
+.freeboard-section h3,
+.signup-section h3,
+.login-section h3,
+.myinfo-section h3 {
+  font-size: 44px; /*글자 크기 */
+  line-height: 1.3; /* 선 높이조절 */
+  font-weight: 700; /* 글자 굵기 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  color: #fff; /* 글자색상 */
+}
+.category-section p,
+.bestpost-section p,
+.freeboard-section p,
+.signup-section p,
+.login-section p,
+.myinfo-section p {
+  font-size: 14px; /*글자 크기 */
+  line-height: 1.7; /* 선 높이조절 */
+  letter-spacing: 1px; /* 글자 사이의 간격 한글로치면 그뭐라하지 무튼그거 */
+  color: gray; /* 글자색상  */
+}
+.category-section p span,
+.bestpost-section p span,
+.freeboard-section p span,
+.signup-section p span,
+.login-section p span,
+.myinfo-section p span {
+  font-size: 20px; /*글자 크기 */
+  line-height: 1.3; /* 선 높이조절 */
+  font-weight: 700; /* 글자 굵기 */
+  color: #866baf; /* 글자색상 */
+}
